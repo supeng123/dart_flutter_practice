@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
 
-// final routes = {
-//   '/':(context) => Tabs(),
-//   '/form':(context) => Tabs(),
-//   '/search':(context,{arguments})=> Tabs() 
-// }
+import '../components/user/Login.dart';
+import '../components/Tabs.dart';
+import '../components/Search.dart';
 
-// var onGenerateRoute = (RouteSettings settings){
-//     final String name = settings.name;
-//     final Function pageContentBuilder = routes[name];
+final routes = {
+  '/':(context,{arguments}) => Tabs(),
+  '/login':(context,{arguments}) => RegisterForm(),
+  '/search': (context,{arguments}) => SearchPage(arguments:arguments)
+};
+
+var onGenerateRoute = (RouteSettings settings){
+    final String name = settings.name;
+    final Function pageContentBuilder = routes[name];
     
-//     if(pageContentBuilder != null){
-//       final Route route = MaterialPageRoute(
-//         builder: (context) => pageContentBuilder(context, arguments: settings.arguments));
-//         return route;		 
+    if(pageContentBuilder != null){
+      final Route route = MaterialPageRoute(
+        builder: (context) => pageContentBuilder(context, arguments: settings.arguments));
+        return route;		 
       
-//     }else {
-//       final Route route = MaterialPageRoute(
-//         builder: (context)=>pageContentBuilder(context);
-//         return route;
-//       );
-//     }
-// };
+    }else {
+      final Route route = MaterialPageRoute(
+        builder: (context) => pageContentBuilder(context));
+        return route;
+    }
+};
