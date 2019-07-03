@@ -6,6 +6,36 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
+  final registerFormKey = GlobalKey<FormState>();
+  String username, password;
+  bool autoValidate = false;
+
+  submitRegisterForm(context) { 
+    if (registerFormKey.currentState.validate()) {
+      registerFormKey.currentState.save();
+      debugPrint('username: $username');
+      Navigator.pushNamed(context, '/search', arguments: {"pid": 123});
+    } else {
+      setState(() {
+        autoValidate = true;
+      });
+    }     
+  }
+
+  String validateUsername(value) {
+    if (value.isEmpty){
+      return 'username is required.';
+    }
+    return null;
+  }
+
+  String validatePassword(value) {
+    if (value.isEmpty){
+      return 'password is required.';
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,18 +45,31 @@ class _RegisterFormState extends State<RegisterForm> {
       ),
       body: Container(
         child: Form(
+          key: registerFormKey,
           child: Column(
             children:<Widget>[
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: 'username'
+                  labelText: 'username',
+                  helperText: ''
                 ),
+                onSaved: (value){
+                  this.username = value;
+                },
+                validator: validateUsername,
+                autovalidate: autoValidate,
               ),
               TextFormField(
                 obscureText: true,
                 decoration: InputDecoration(
-                  labelText: 'password'
+                  labelText: 'password',
+                  helperText: ''
                 ),
+                onSaved: (value){
+                  this.password = value;
+                },
+                validator: validatePassword,
+                autovalidate: autoValidate,
               ),
               SizedBox(height:32.0),
               Container(
@@ -35,7 +78,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   color: Theme.of(context).accentColor,
                   elevation: 0.0,
                   onPressed: (){
-                      Navigator.pushNamed(context, '/search', arguments: {"pid": 123});
+                    this.submitRegisterForm(context);
                   },
                   child: Text(
                     'Register',
