@@ -5,14 +5,63 @@ class BookPage extends StatefulWidget {
   _BookPageState createState() => _BookPageState();
 }
 
-class _BookPageState extends State<BookPage> {
+class _BookPageState extends State<BookPage> with SingleTickerProviderStateMixin {
+  TabController contorller;
+  @override
+  void initState() {
+    super.initState();
+    contorller = new TabController(length: 4, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return new Scaffold(
       appBar: AppBar(
-        title: Text('BookPage'),
-        elevation: 0.0,
+        bottom: TabBar(
+          controller: contorller,
+          tabs: <Tab>[
+            Tab(text: "hot topic"),
+            Tab(text: "recommend"),
+            Tab(text: "movie"),
+            Tab(text: "music")
+          ]
+        ),
+        
       ),
+      body: TabBarView(
+        controller: contorller,
+        children: <Widget>[
+        ListView(
+          children: <Widget>[
+            ListTile(
+              title: Text("first tab")
+            ),
+          ],
+        ),
+        ListView(
+          children: <Widget>[
+            ListTile(
+              title: Text("fourth tab")
+            ),
+          ],
+        ),
+        ListView(
+          children: <Widget>[
+            ListTile(
+              title: Text("second tab")
+            ),
+          ],
+        ),
+        ListView(
+          children: <Widget>[
+            ListTile(
+              title: Text("third tab")
+            ),
+          ],
+        ),
+        
+      ],),
     );
+    
   }
 }

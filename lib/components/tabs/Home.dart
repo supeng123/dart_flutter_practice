@@ -9,34 +9,54 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('HomePage'),
-        elevation: 0.0,
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          RaisedButton(
-            child: Text("search"),
-            color: Theme.of(context).accentColor,
-            textTheme: ButtonTextTheme.primary,
-            onPressed: () {
-              Navigator.pushNamed(context, '/search', arguments:{"pid":111});
-            },
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: TextField(
+            cursorColor: Colors.white, //设置光标
+              decoration: InputDecoration(
+                //输入框decoration属性
+                contentPadding: new EdgeInsets.only(left: 0.0),
+                fillColor: Colors.black,
+                border: InputBorder.none,
+                icon: IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: (){
+
+                  }),
+                hintText: "content",
+                hintStyle: new TextStyle(fontSize: 14, color: Colors.white)),
+                style: new TextStyle(fontSize: 14, color: Colors.white),
           ),
-          SizedBox(height: 20),
-          RaisedButton(
-            child: Text("log in"),
-            color: Theme.of(context).accentColor,
-            textTheme: ButtonTextTheme.primary,
-            onPressed: () {
-                Navigator.pushNamed(context, '/login');
-            },
+          elevation: 0.0,
+          backgroundColor: Colors.blueGrey,
+          bottom: TabBar(
+            tabs: <Widget>[
+              Tab(text: "hot topic"),
+              Tab(text: "recommend")
+            ],
           ),
-          SizedBox(height: 20),
-        ],
-      ),
-    );
+        ),
+        body: TabBarView(
+          children: <Widget>[
+            ListView(
+              children: <Widget>[
+                ListTile(
+                  title: Text("first tab")
+                ),
+              ],
+            ),
+            ListView(
+              children: <Widget>[
+                ListTile(
+                  title: Text("second tab")
+                ),
+              ],
+            ),
+          ]
+        )
+    ),);
   }
 }
+
