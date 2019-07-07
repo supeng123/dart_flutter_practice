@@ -13,6 +13,14 @@ class _PersonPageState extends State<PersonPage> {
         title: Text('PersonPage'),
         elevation: 0.0,
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+
+        },
+        child: Icon(Icons.add, size: 33),
+        backgroundColor: Colors.greenAccent
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[

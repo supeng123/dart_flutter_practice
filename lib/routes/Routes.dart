@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../components/user/Register.dart';
 import '../components/user/Login.dart';
 import '../components/Tabs.dart';
 import '../components/Search.dart';
 
 final routes = {
   '/':(context,{arguments}) => Tabs(),
-  '/login':(context,{arguments}) => RegisterForm(),
+  '/register':(context,{arguments}) => RegisterForm(),
+  '/login':(context, {arguments}) => LoginPage(),
   '/search': (context,{arguments}) => SearchPage(arguments:arguments)
 };
 

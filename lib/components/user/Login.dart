@@ -1,93 +1,99 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class RegisterForm extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _RegisterFormState createState() => _RegisterFormState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _RegisterFormState extends State<RegisterForm> {
-  final registerFormKey = GlobalKey<FormState>();
-  String username, password;
-  bool autoValidate = false;
+class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMixin {
+  Animation<double> _iconAnimation;
+  AnimationController _iconAnimationController;
 
-  submitRegisterForm(context) { 
-    if (registerFormKey.currentState.validate()) {
-      registerFormKey.currentState.save();
-      debugPrint('username: $username');
-      Navigator.pushNamed(context, '/search', arguments: {"pid": 123});
-    } else {
-      setState(() {
-        autoValidate = true;
-      });
-    }     
+  @override
+  void initState() {
+    super.initState();
+    _iconAnimationController = AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+    _iconAnimation = CurvedAnimation(
+      parent: _iconAnimationController,
+      curve: Curves.bounceOut,
+    );
+    _iconAnimation.addListener(() => this.setState(() {}));
+    _iconAnimationController.forward();
   }
 
-  String validateUsername(value) {
-    if (value.isEmpty){
-      return 'username is required.';
-    }
-    return null;
-  }
-
-  String validatePassword(value) {
-    if (value.isEmpty){
-      return 'password is required.';
-    }
-    return null;
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('RegisterForm'),
-        elevation: 0.0,
-      ),
-      body: Container(
-        child: Form(
-          key: registerFormKey,
-          child: Column(
-            children:<Widget>[
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'username',
-                  helperText: ''
-                ),
-                onSaved: (value){
-                  this.username = value;
-                },
-                validator: validateUsername,
-                autovalidate: autoValidate,
+      backgroundColor: Colors.white,
+      body: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          Image(
+            image: AssetImage("assets/tim.jpeg"),
+            fit: BoxFit.cover,
+            colorBlendMode: BlendMode.darken,
+            color: Colors.black87
+          ),
+          Theme(
+            data: ThemeData(
+              brightness: Brightness.dark,
+              inputDecorationTheme: InputDecorationTheme(
+                labelStyle: TextStyle(color: Colors.tealAccent, fontSize: 25.0)
               ),
-              TextFormField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'password',
-                  helperText: ''
-                ),
-                onSaved: (value){
-                  this.password = value;
-                },
-                validator: validatePassword,
-                autovalidate: autoValidate,
-              ),
-              SizedBox(height:32.0),
-              Container(
-                width: double.infinity,
-                child: RaisedButton(
-                  color: Theme.of(context).accentColor,
-                  elevation: 0.0,
-                  onPressed: (){
-                    this.submitRegisterForm(context);
-                  },
-                  child: Text(
-                    'Register',
-                    style: TextStyle(color: Colors.white))
+            ),
+            isMaterialAppTheme: true,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                FlutterLogo(size: _iconAnimation.value * 140.0),
+                Container(
+                  padding: const EdgeInsets.all(40.0),
+                  child: Form(
+                    autovalidate: true,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        TextFormField(
+                          style: TextStyle(
+                            color:Colors.white
+                          ),
+                          decoration: InputDecoration(
+                            labelText: "Enter Email",
+                          ),
+                          keyboardType: TextInputType.emailAddress,
+                        ),
+                        TextFormField(
+                          style: TextStyle(
+                            color:Colors.white
+                          ),
+                          decoration: new InputDecoration(
+                            labelText: "Enter Password",
+                          ),
+                          obscureText: true,
+                          keyboardType: TextInputType.text,
+                        ),
+                        Padding(padding: EdgeInsets.only(top: 60.0)),
+                        MaterialButton(
+                          height: 50.0,
+                          minWidth: 150.0,
+                          color: Colors.green,
+                          splashColor: Colors.teal,
+                          textColor: Colors.white,
+                          child: Icon(FontAwesomeIcons.signInAlt),
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/');
+                          },
+                        )
+                      ]
+                    )
+                  ),
                 )
-              )
-            ]
+              ],
+            ),
           )
-        ),
+        ],
       ),
     );
   }
