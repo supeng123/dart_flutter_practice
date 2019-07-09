@@ -42,6 +42,14 @@ class _PersonPageState extends State<PersonPage> {
             },
           ),
           SizedBox(height: 20),
+          RaisedButton(
+            child: Text("dart basic one"),
+            color: Theme.of(context).accentColor,
+            textTheme: ButtonTextTheme.primary,
+            onPressed: () {
+                Navigator.pushNamed(context, '/basicone');
+            },
+          ),
         ],
       ),
     );
