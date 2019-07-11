@@ -6,12 +6,14 @@ import '../components/Tabs.dart';
 import '../components/Search.dart';
 
 import '../demos/dartBasic/basicone.dart';
+import '../demos/expenseApp/index.dart';
 
 final routes = {
   '/':(context,{arguments}) => Tabs(),
   '/register':(context,{arguments}) => RegisterForm(),
   '/login':(context, {arguments}) => LoginPage(),
   '/basicone': (context, {arguments}) => BasicOnePage(),
+  '/expenseApp': (context, {arguments}) => ExpenseAppPage(),
   '/search': (context,{arguments}) => SearchPage(arguments:arguments),
 };
 

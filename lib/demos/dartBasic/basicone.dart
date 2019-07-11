@@ -21,15 +21,6 @@ class _BasicOnePageState extends State<BasicOnePage> {
   var _questionIndex = 0;
   var _totalScore = 0;
 
-  void _answerQuestion(int score) {
-
-    setState(() {
-      _totalScore += score;
-      this._questionIndex = this._questionIndex + 1;
-      print(_questionIndex);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     
@@ -45,5 +36,14 @@ class _BasicOnePageState extends State<BasicOnePage> {
       answerQuestion: _answerQuestion,) : 
       Center(child: Text('${_totalScore}')),
     );
+  }
+
+  void _answerQuestion(int score) {
+
+    setState(() {
+      _totalScore += score;
+      this._questionIndex = this._questionIndex + 1;
+      print(_questionIndex);
+    });
   }
 }
