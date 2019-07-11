@@ -9,9 +9,6 @@ class ExpenseAppPage extends StatefulWidget {
 
 class _ExpenseAppPageState extends State<ExpenseAppPage> {
   
-
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
