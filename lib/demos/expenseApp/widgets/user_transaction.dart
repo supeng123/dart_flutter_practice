@@ -1,40 +1,50 @@
-import 'package:flutter/material.dart';
-import './transaction_list.dart';
-import './new_transaction.dart';
-import '../transaction.dart';
+// import 'package:flutter/material.dart';
 
-class UserTransaction extends StatefulWidget {
-  @override
-  _UserTransactionState createState() => _UserTransactionState();
-}
+// import './new_transaction.dart';
+// import './transaction_list.dart';
+// import '../transaction.dart';
 
-class _UserTransactionState extends State<UserTransaction> {
-  final List<Transaction> _userTransactions = [
-      Transaction(id: 't1', title: 'New shoes', amount: 67.99, date: DateTime.now()),
-      Transaction(id: 't2', title: 'New clothes', amount: 97.99, date: DateTime.now()),
-      Transaction(id: 't3', title: 'New coat', amount: 687.99, date: DateTime.now()),
-      Transaction(id: 't4', title: 'New boat', amount: 867.99, date: DateTime.now())
-  ];
+// class UserTransactions extends StatefulWidget {
+//   @override
+//   _UserTransactionsState createState() => _UserTransactionsState();
+// }
 
-  void _addNewTransaction(String txTitle, double txAmount) {
-    final newTx = Transaction(
-      title: txTitle, 
-      amount: txAmount, 
-      date: DateTime.now(), 
-      id: DateTime.now().toString()
-    );
+// class _UserTransactionsState extends State<UserTransactions> {
+//   // final List<Transaction> _userTransactions = [
+//   //   Transaction(
+//   //     id: 't1',
+//   //     title: 'New Shoes',
+//   //     amount: 69.99,
+//   //     date: DateTime.now(),
+//   //   ),
+//   //   Transaction(
+//   //     id: 't2',
+//   //     title: 'Weekly Groceries',
+//   //     amount: 16.53,
+//   //     date: DateTime.now(),
+//   //   ),
+//   // ];
 
-    setState(() {
-      _userTransactions.add(newTx);
-    });
-  }
+//   // void _addNewTransaction(String txTitle, double txAmount) {
+//   //   final newTx = Transaction(
+//   //     title: txTitle,
+//   //     amount: txAmount,
+//   //     date: DateTime.now(),
+//   //     id: DateTime.now().toString(),
+//   //   );
 
+//   //   setState(() {
+//   //     _userTransactions.add(newTx);
+//   //   });
+//   // }
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(children: <Widget>[
-      NewTransaction(_addNewTransaction),
-      TransactionList(_userTransactions)
-    ],);
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       children: <Widget>[
+//         NewTransaction(_addNewTransaction),
+//         // TransactionList(_userTransactions),
+//       ],
+//     );
+//   }
+// }
