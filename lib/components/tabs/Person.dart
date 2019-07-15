@@ -59,6 +59,15 @@ class _PersonPageState extends State<PersonPage> {
                 Navigator.pushNamed(context, '/expenseApp');
             },
           ),
+          SizedBox(height: 20),
+          RaisedButton(
+            child: Text("mealApp"),
+            color: Theme.of(context).accentColor,
+            textTheme: ButtonTextTheme.primary,
+            onPressed: () {
+                Navigator.pushNamed(context, '/mealApp');
+            },
+          ),
         ],
       ),
     );
