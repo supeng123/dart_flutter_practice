@@ -11,6 +11,7 @@ class CategoryMealsScreen extends StatefulWidget {
   // CategoryMealsScreen(this.categoryId, this.categoryTitle);
   @override
   _CategoryMealsScreenState createState() => _CategoryMealsScreenState();
+}
 
   class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
 
@@ -34,16 +35,15 @@ class CategoryMealsScreen extends StatefulWidget {
 
     
 
-    super.didChangeDependencies()
+    super.didChangeDependencies();
   }
 
   void _removeMeal(String mealId) {
     setState(() {
-
-      displayMeals.removeWhere((meal) => {
+      displayMeals.removeWhere((meal) {
         meal.id == mealId;
-      })
-    })
+      });
+    });
   }
 
   @override
@@ -63,7 +63,7 @@ class CategoryMealsScreen extends StatefulWidget {
             displayMeals[index].duration,
             displayMeals[index].complexity,
             displayMeals[index].affordability,
-            removeItem: _removeMeal
+            _removeMeal
             );
         },
         itemCount: displayMeals.length,

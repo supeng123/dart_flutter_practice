@@ -48,7 +48,7 @@ class MainDrawer extends StatelessWidget {
               ),
             ),
             onTap: (){
-              Navigator.of(context).pushReplacementNamed(FilterScreen.routeName);
+              Navigator.of(context).pushReplacementNamed(FiltersScreen.routeName);
             },
           )
         ],
