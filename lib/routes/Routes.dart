@@ -8,6 +8,7 @@ import '../components/Search.dart';
 import '../demos/dartBasic/basicone.dart';
 import '../demos/expenseApp/index.dart';
 import '../demos/mealApp/index.dart';
+import '../demos/shoppingApp/index.dart';
 
 final routes = {
   '/':(context,{arguments}) => Tabs(),
@@ -16,6 +17,7 @@ final routes = {
   '/basicone': (context, {arguments}) => BasicOnePage(),
   '/expenseApp': (context, {arguments}) => ExpenseAppPage(),
   '/mealApp': (context, {arguments}) => MealAppPage(),
+  '/shoppingApp': (context, {arguments}) => ShoppingAppPage(),
   '/search': (context,{arguments}) => SearchPage(arguments:arguments),
 };
 

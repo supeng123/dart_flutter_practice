@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.amber,
         appBarTheme: AppBarTheme(
           textTheme: ThemeData.light().textTheme.copyWith(title: TextStyle(fontSize: 15, fontWeight: FontWeight.bold))
-        )
+        ),
+        // fontFamily: 'Trajan Pro'
       ),
       
       debugShowCheckedModeBanner: false,
