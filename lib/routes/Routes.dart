@@ -8,7 +8,9 @@ import '../components/Search.dart';
 import '../demos/dartBasic/basicone.dart';
 import '../demos/expenseApp/index.dart';
 import '../demos/mealApp/index.dart';
+
 import '../demos/shoppingApp/index.dart';
+import '../demos/shoppingApp/screens/products_detail_screen.dart';
 
 final routes = {
   '/':(context,{arguments}) => Tabs(),
@@ -19,6 +21,7 @@ final routes = {
   '/mealApp': (context, {arguments}) => MealAppPage(),
   '/shoppingApp': (context, {arguments}) => ShoppingAppPage(),
   '/search': (context,{arguments}) => SearchPage(arguments:arguments),
+  ProductDetailScreen.routeName: (context,{arguments}) => ProductDetailScreen()
 };
 
 var onGenerateRoute = (RouteSettings settings){
