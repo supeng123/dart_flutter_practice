@@ -5,14 +5,22 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:provider/provider.dart';
 import './demos/shoppingApp/providers/products.dart';
+import './demos/shoppingApp/providers/cart.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider.value(
-      value: Products(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(
+          value: Products(),
+        ),
+        ChangeNotifierProvider.value(
+          value: Cart(),
+        ),
+      ],
       child: MaterialApp(
         theme: ThemeData(
           primarySwatch: Colors.purple,
