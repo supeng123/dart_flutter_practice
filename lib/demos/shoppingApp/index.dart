@@ -22,11 +22,6 @@ class _ShoppingAppPageState extends State<ShoppingAppPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('ShoppingAppPage'),
-        elevation: 0.0,
-      ),
-      
       body: ProductsOverviewScreen(),
     );
   }
