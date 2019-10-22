@@ -22,7 +22,7 @@ final routes = {
   '/mealApp': (context, {arguments}) => MealAppPage(),
   '/shoppingApp': (context, {arguments}) => ShoppingAppPage(),
   '/search': (context,{arguments}) => SearchPage(arguments:arguments),
-  ProductDetailScreen.routeName: (context,{arguments}) => ProductDetailScreen(),
+  ProductDetailScreen.routeName: (context,{arguments}) => ProductDetailScreen(arguments),
   CartScreen.routeName: (context,{arguments}) => CartScreen()
 };
 
@@ -31,6 +31,7 @@ var onGenerateRoute = (RouteSettings settings){
     final Function pageContentBuilder = routes[name];
     
     if(pageContentBuilder != null){
+      print(settings.arguments);
       final Route route = MaterialPageRoute(
         builder: (context) => pageContentBuilder(context, arguments: settings.arguments));
         return route;		 
