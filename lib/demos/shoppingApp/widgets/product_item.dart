@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../screens/products_detail_screen.dart';
 
 import '../models/product.dart';
+import '../providers/products.dart';
 import '../providers/cart.dart';
 
 class ProductItem extends StatelessWidget {
@@ -23,8 +24,7 @@ class ProductItem extends StatelessWidget {
                 print('111');
                 print(product.id);
                 print('111');
-                Navigator.of(context).pushNamed(ProductDetailScreen.routeName,
-                    arguments: 'p1');
+                Navigator.of(context).pushNamed(ProductDetailScreen.routeName, arguments: ScreenArguments(product.id));
               },
               child: Image.network(product.imageUrl, fit: BoxFit.cover)),
           footer: GridTileBar(

@@ -34,7 +34,7 @@ class Products with ChangeNotifier {
       ),
   ];
 
-  var _showFavoritesOnly = false;
+  // var _showFavoritesOnly = false;
 
 
   List<Product> get items {
@@ -63,4 +63,9 @@ class Products with ChangeNotifier {
   //   _showFavoritesOnly = false;
   //   notifyListeners();
   // }
+}
+
+class ScreenArguments {
+  final String id;
+  ScreenArguments(this.id);
 }
