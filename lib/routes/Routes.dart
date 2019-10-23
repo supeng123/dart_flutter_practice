@@ -27,7 +27,7 @@ final routes = {
   '/search': (context,{arguments}) => SearchPage(arguments:arguments),
   ProductDetailScreen.routeName: (context,{arguments}) => ProductDetailScreen(arguments),
   CartScreen.routeName: (context,{arguments}) => CartScreen(),
-  prefix0.OrdersScreen.routeName: (context,{arguments}) => OrdersScreen(),
+  OrdersScreen.routeName: (context,{arguments}) => OrdersScreen(),
 };
 
 var onGenerateRoute = (RouteSettings settings){

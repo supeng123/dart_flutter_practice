@@ -35,13 +35,12 @@ class Cart with ChangeNotifier {
   void addItem(String productId, double price, String title) {
     if (_items.containsKey(productId)) {
       _items.update(
-        productId, 
-        (existingCartItem) => CartItem(
-          id: existingCartItem.id,
-          title: existingCartItem.title,
-          price: existingCartItem.price,
-          quantity: existingCartItem.quantity + 1
-          ));
+          productId,
+          (existingCartItem) => CartItem(
+              id: existingCartItem.id,
+              title: existingCartItem.title,
+              price: existingCartItem.price,
+              quantity: existingCartItem.quantity + 1));
     } else {
       _items.putIfAbsent(
           productId,
@@ -56,6 +55,24 @@ class Cart with ChangeNotifier {
 
   void removeItem(String productId) {
     _items.remove(productId);
+    notifyListeners();
+  }
+
+  void removeSingleItme(productId) {
+    if (!_items.containsKey(productId)) {
+      return;
+    }
+    if (_items[productId].quantity > 1) {
+      _items.update(
+          productId,
+          (existingCartItem) => CartItem(
+              quantity: existingCartItem.quantity - 1,
+              id: existingCartItem.id,
+              price: existingCartItem.price,
+              title: existingCartItem.title));
+    } else {
+      _items.remove(productId);
+    }
     notifyListeners();
   }
 

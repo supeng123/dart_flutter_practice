@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'routes/Routes.dart';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import './demos/shoppingApp/providers/products.dart';
 import './demos/shoppingApp/providers/cart.dart';
+import './demos/shoppingApp/providers/orders.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,6 +21,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider.value(
           value: Cart(),
+        ),
+        ChangeNotifierProvider.value(
+          value: Orders(),
         ),
       ],
       child: MaterialApp(
