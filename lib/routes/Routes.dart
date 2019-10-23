@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_app/demos/shoppingApp/providers/orders.dart';
+import 'package:my_first_app/demos/shoppingApp/screens/order_screen.dart' as prefix0;
 
 import '../components/user/Register.dart';
 import '../components/user/Login.dart';
@@ -12,6 +14,7 @@ import '../demos/mealApp/index.dart';
 import '../demos/shoppingApp/index.dart';
 import '../demos/shoppingApp/screens/products_detail_screen.dart';
 import '../demos/shoppingApp/screens/cart_screen.dart';
+import '../demos/shoppingApp/screens/order_screen.dart';
 
 final routes = {
   '/':(context,{arguments}) => Tabs(),
@@ -23,7 +26,8 @@ final routes = {
   '/shoppingApp': (context, {arguments}) => ShoppingAppPage(),
   '/search': (context,{arguments}) => SearchPage(arguments:arguments),
   ProductDetailScreen.routeName: (context,{arguments}) => ProductDetailScreen(arguments),
-  CartScreen.routeName: (context,{arguments}) => CartScreen()
+  CartScreen.routeName: (context,{arguments}) => CartScreen(),
+  prefix0.OrdersScreen.routeName: (context,{arguments}) => OrdersScreen(),
 };
 
 var onGenerateRoute = (RouteSettings settings){
