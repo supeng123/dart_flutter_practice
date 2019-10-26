@@ -28,7 +28,7 @@ final routes = {
   CartScreen.routeName: (context,{arguments}) => CartScreen(),
   OrdersScreen.routeName: (context,{arguments}) => OrdersScreen(),
   UserProductsScreen.routeName: (context, {arguments}) => UserProductsScreen(),
-  EditProductScreen.routeName: (context, {arguments}) => EditProductScreen()
+  EditProductScreen.routeName: (context, {arguments}) => EditProductScreen(arguments)
 };
 
 var onGenerateRoute = (RouteSettings settings){
