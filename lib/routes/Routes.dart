@@ -14,6 +14,7 @@ import '../demos/shoppingApp/screens/cart_screen.dart';
 import '../demos/shoppingApp/screens/order_screen.dart';
 import '../demos/shoppingApp/screens/user_products_screen.dart';
 import '../demos/shoppingApp/screens/edit_product_screen.dart';
+import '../demos/shoppingApp/screens/auth-screen.dart';
 
 final routes = {
   '/':(context,{arguments}) => Tabs(),
@@ -28,7 +29,8 @@ final routes = {
   CartScreen.routeName: (context,{arguments}) => CartScreen(),
   OrdersScreen.routeName: (context,{arguments}) => OrdersScreen(),
   UserProductsScreen.routeName: (context, {arguments}) => UserProductsScreen(),
-  EditProductScreen.routeName: (context, {arguments}) => EditProductScreen(arguments)
+  EditProductScreen.routeName: (context, {arguments}) => EditProductScreen(arguments),
+  AuthScreen.routeName: (context, {arguments}) => AuthScreen(),
 };
 
 var onGenerateRoute = (RouteSettings settings){

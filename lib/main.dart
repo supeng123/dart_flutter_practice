@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import './demos/shoppingApp/providers/products.dart';
 import './demos/shoppingApp/providers/cart.dart';
 import './demos/shoppingApp/providers/orders.dart';
+import './demos//shoppingApp/providers/auth.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,6 +17,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider.value(
+          value: Auth(),
+        ),
         ChangeNotifierProvider.value(
           value: Products(),
         ),
