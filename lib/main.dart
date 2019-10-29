@@ -30,18 +30,21 @@ class MyApp extends StatelessWidget {
           value: Orders(),
         ),
       ],
-      child: MaterialApp(
-        theme: ThemeData(
-          primarySwatch: Colors.purple,
-          accentColor: Colors.amber,
-          appBarTheme: AppBarTheme(
-              textTheme: ThemeData.light().textTheme.copyWith(
-                  title: TextStyle(fontSize: 15, fontWeight: FontWeight.bold))),
-          // fontFamily: 'Trajan Pro'
+      child: Consumer<Auth>(
+        builder: (ctx, auth, _) => MaterialApp(
+          theme: ThemeData(
+            primarySwatch: Colors.purple,
+            accentColor: Colors.amber,
+            appBarTheme: AppBarTheme(
+                textTheme: ThemeData.light().textTheme.copyWith(
+                    title:
+                        TextStyle(fontSize: 15, fontWeight: FontWeight.bold))),
+            // fontFamily: 'Trajan Pro'
+          ),
+          debugShowCheckedModeBanner: false,
+          initialRoute: auth.isAuth ? '/shoppingApp' :'/',
+          onGenerateRoute: onGenerateRoute,
         ),
-        debugShowCheckedModeBanner: false,
-        initialRoute: '/',
-        onGenerateRoute: onGenerateRoute,
       ),
     );
   }

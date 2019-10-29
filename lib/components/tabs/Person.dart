@@ -74,7 +74,7 @@ class _PersonPageState extends State<PersonPage> {
             color: Theme.of(context).accentColor,
             textTheme: ButtonTextTheme.primary,
             onPressed: () {
-                Navigator.pushNamed(context, '/auth');
+                Navigator.pushNamed(context, '/shoppingApp');
             },
           ),
         ],

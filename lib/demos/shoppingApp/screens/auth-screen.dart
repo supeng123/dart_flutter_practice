@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import '../models/http_exception.dart';
 
 import 'package:provider/provider.dart';
 import '../providers/auth.dart';
@@ -103,22 +104,57 @@ class _AuthCardState extends State<AuthCard> {
   var _isLoading = false;
   final _passwordController = TextEditingController();
 
+  void _showErrorDialog(String message) {
+    showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+              title: Text('An error occured'),
+              content: Text(message),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('Okay'),
+                  onPressed: () {
+                    Navigator.of(ctx).pop();
+                  },
+                )
+              ],
+            ));
+  }
+
   Future<void> _submit() async {
     if (!_formKey.currentState.validate()) {
       // Invalid!
       return;
     }
     _formKey.currentState.save();
-    setState(() { 
+    setState(() {
       _isLoading = true;
     });
-    if (_authMode == AuthMode.Login) {
-      // Log user in
-    } else {
-      // Sign user up
-      await Provider.of<Auth>(context, listen: false)
-          .signup(_authData['email'], _authData['password']);
+
+    try {
+      if (_authMode == AuthMode.Login) {
+        // Log user in
+        await Provider.of<Auth>(context, listen: false)
+            .login(_authData['email'], _authData['password']);
+      } else {
+        // Sign user up
+        await Provider.of<Auth>(context, listen: false)
+            .signup(_authData['email'], _authData['password']);
+        Navigator.of(context).pushReplacementNamed('/shoppingApp');
+      }
+    } on HttpException catch (error) {
+      var errorMessage = 'Authentication failed';
+      if (error.toString().contains('EMAIL_EXISTS')) {
+        errorMessage = 'This email address is already in use.';
+      } else {
+        errorMessage = 'This password is too simple';
+      }
+      _showErrorDialog(errorMessage);
+    } catch (error) {
+      var errorMessage = 'could not authenticate you. please try again!';
+      _showErrorDialog(errorMessage);
     }
+
     setState(() {
       _isLoading = false;
     });
