@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 import 'routes/Routes.dart';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
@@ -8,7 +9,8 @@ import 'package:provider/provider.dart';
 import './demos/shoppingApp/providers/products.dart';
 import './demos/shoppingApp/providers/cart.dart';
 import './demos/shoppingApp/providers/orders.dart';
-import './demos//shoppingApp/providers/auth.dart';
+import './demos/shoppingApp/providers/auth.dart';
+import './demos/shoppingApp/helper/custom_router.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,6 +36,10 @@ class MyApp extends StatelessWidget {
       child: Consumer<Auth>(
         builder: (ctx, auth, _) => MaterialApp(
           theme: ThemeData(
+            pageTransitionsTheme: PageTransitionsTheme(builders: {
+              TargetPlatform.android: CustomPageTransitionBuilder(),
+              TargetPlatform.iOS: CustomPageTransitionBuilder()
+            }),
             primarySwatch: Colors.purple,
             accentColor: Colors.amber,
             appBarTheme: AppBarTheme(
