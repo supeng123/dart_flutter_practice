@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_app/demos/loationApp/screens/add_place_screen.dart';
+import 'package:my_first_app/demos/loationApp/screens/places_list_screen.dart';
 import '../components/user/Register.dart';
 import '../components/user/Login.dart';
 import '../components/Tabs.dart';
@@ -31,6 +33,8 @@ final routes = {
   UserProductsScreen.routeName: (context, {arguments}) => UserProductsScreen(),
   EditProductScreen.routeName: (context, {arguments}) => EditProductScreen(arguments),
   AuthScreen.routeName: (context, {arguments}) => AuthScreen(),
+  '/places-list': (context, {arguments}) => PlaceListScreen(),
+  AddPlacesScreen.routeName: (context, {arguments}) => AddPlacesScreen(),
 };
 
 var onGenerateRoute = (RouteSettings settings){

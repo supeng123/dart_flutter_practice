@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 
+
 import 'routes/Routes.dart';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
@@ -12,6 +13,9 @@ import './demos/shoppingApp/providers/orders.dart';
 import './demos/shoppingApp/providers/auth.dart';
 import './demos/shoppingApp/helper/custom_router.dart';
 
+
+import './demos/loationApp/providers/greate_places.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -19,6 +23,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider.value(
+          value: GreatePlaces()
+        ),
         ChangeNotifierProvider.value(
           value: Auth(),
         ),

@@ -77,6 +77,15 @@ class _PersonPageState extends State<PersonPage> {
                 Navigator.pushNamed(context, '/shoppingApp');
             },
           ),
+          SizedBox(height: 20),
+          RaisedButton(
+            child: Text("placesApp"),
+            color: Theme.of(context).accentColor,
+            textTheme: ButtonTextTheme.primary,
+            onPressed: () {
+                Navigator.pushNamed(context, '/places-list');
+            },
+          ),
         ],
       ),
     );
