@@ -14,7 +14,7 @@ class _TabsState extends State<Tabs> {
 
   int _currentIndex = 1;
   var appBarTitles = ['首页', '书影音', '小组', '我的'];
-  List _pageList = [
+  List<Widget> _pageList = [
     HomePage(),
     BookPage(),
     GroupPage(),
@@ -35,7 +35,12 @@ class _TabsState extends State<Tabs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: this._pageList[this._currentIndex],
+        // body: this._pageList[this._currentIndex],
+        //below used for keep AutomaticKeepAliveClientMixin
+        body: IndexedStack(
+          index: _currentIndex,
+          children: _pageList,
+        ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: this._currentIndex,
           onTap: (int index){
