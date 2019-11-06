@@ -6,13 +6,15 @@ import 'package:provider/provider.dart';
 import 'dart:convert';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
 
 class GroupPage extends StatefulWidget {
   @override
   _GroupPageState createState() => _GroupPageState();
 }
 
-class _GroupPageState extends State<GroupPage> with AutomaticKeepAliveClientMixin {
+class _GroupPageState extends State<GroupPage>
+    with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 
@@ -106,3 +108,27 @@ class LeaderPhone extends StatelessWidget {
 }
 
 // keep the status of each page
+//stream widget , so the columns will be 2
+//Wrap(space: 2, children:ListWidget)
+
+//easyRefresh plugin needs Listview, so the singleScrollView should be removed
+// GlobalKey<RefreshFooterState> _footerkey = new GlobalKey<RefreshFooterState>();
+// Widget refresh = EasyRefresh(
+//   child: ListView(
+//     children: <Widget>[],
+//   ),
+//   refreshFooter: ClassicsFooter(
+//     key: _footerkey,
+//     bgColor: Colors.white,
+//     textColor: Colors.pink,
+//     moreInfoColor: Colors.pink,
+//     noMoreText: '',
+//     moreInfo: 'loading ...',
+//     loadReadyText: 'pull loading',
+//   ),
+// );
+
+//disable refresh of GridView
+// GridView.count(
+//   physics: NeverScrollableScrollPhysics(),
+// )
